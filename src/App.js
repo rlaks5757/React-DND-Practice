@@ -1,16 +1,24 @@
-import React from 'react';
-import { DndProvider, useDrag } from 'react-dnd';
+import React, { useState } from 'react';
+import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
-import FirstColumn from './FirstColumn';
-import SecondColumn from './SecondColumn';
+import Column from './Column';
+import MovableItem from './MovableItem';
 import './App.css';
 
 const App = () => {
+  const [isFirstColumn, setIsFirstColumn] = useState(true);
+
+  const Item = <MovableItem setIsFirstColumn={setIsFirstColumn} />;
+
   return (
     <div className="container">
       <DndProvider backend={HTML5Backend}>
-        <FirstColumn />
-        <SecondColumn />
+        <Column title="Column 1" className="column first-column">
+          {isFirstColumn && Item}
+        </Column>
+        <Column title="Column 2" className="column second-column">
+          {!isFirstColumn && Item}
+        </Column>
       </DndProvider>
     </div>
   );

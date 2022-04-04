@@ -1,9 +1,17 @@
 import React from 'react';
 import { useDrag } from 'react-dnd';
 
-const MovableItem = () => {
+const MovableItem = ({ setIsFirstColumn }) => {
   const [{ isDragging }, drag] = useDrag({
-    item: { name: 'Any custom name', type: 'Irrelevant, for Now' },
+    item: { name: 'Any custom name', type: 'Our first type' },
+    end: (item, monitor) => {
+      const dropResult = monitor.getDropResult();
+      if (dropResult && dropResult.name === 'Column 1') {
+        setIsFirstColumn(true);
+      } else {
+        setIsFirstColumn(false);
+      }
+    },
     collect: monitor => ({ isDragging: monitor.isDragging() }),
   });
 
