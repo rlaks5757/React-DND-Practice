@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
-import Column from './Column';
-import MovableItem from './MovableItem';
+import Column from './App1Component/Column';
+import MovableItem from './App1Component/MovableItem';
 import './App.css';
 
 const App = () => {
