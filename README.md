@@ -1,3 +1,3 @@
-# React-Setting
+# React-DND-Practice
 
-React First Setting(Mac / Window)
+Practice
