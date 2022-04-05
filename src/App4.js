@@ -3,7 +3,7 @@ import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import Column from './App4Component/Column';
 import MovableItem from './App4Component/MovableItem';
-import './App4.css';
+import './App4.scss';
 
 const App4 = () => {
   const [items, setItems] = useState([
@@ -67,7 +67,7 @@ const App4 = () => {
 
   return (
     <>
-      <div className="container">
+      <div className="container4">
         <DndProvider backend={HTML5Backend}>
           <Column title="DND Box" className="column first-column">
             {items.map((item, idx) => (
