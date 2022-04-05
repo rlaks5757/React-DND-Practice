@@ -1,0 +1,17 @@
+.gridDND {
+  width: 1500px;
+  height: 1500px;
+
+  border: 1px solid red;
+}
+
+.container {
+}
+
+.move {
+  margin: 10px;
+  width: 100px;
+  height: 100px;
+
+  border: 1px solid blue;
+}

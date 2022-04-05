@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
-import Column from './App3Component/Column';
-import MovableItem from './App3Component/MovableItem';
-import './App3.css';
+import Column from './App4Component/Column';
+import MovableItem from './App4Component/MovableItem';
+import './App4.css';
 
-const App3 = () => {
+const App4 = () => {
   const [items, setItems] = useState([
     { id: 1, name: 'Item 1', column: 'Column 1' },
     { id: 2, name: 'Item 2', column: 'Column 1' },
@@ -35,6 +35,23 @@ const App3 = () => {
     }
   };
 
+  const addItemHandler = order => {
+    const itemLength = items.length;
+    if (order === 'add') {
+      items.push({
+        id: itemLength + 1,
+        name: `Item ${itemLength + 1}`,
+        column: 'Column 1',
+      });
+      setItems(items);
+      console.log(items);
+    } else {
+      items.pop();
+      setItems(items);
+      console.log(items);
+    }
+  };
+
   const returnItemsForColumn = columnName => {
     return items
       .filter(item => item.column === columnName)
@@ -50,17 +67,29 @@ const App3 = () => {
   };
 
   return (
-    <div className="container">
-      <DndProvider backend={HTML5Backend}>
-        <Column title="Column 1" className="column first-column">
-          {returnItemsForColumn('Column 1')}
-        </Column>
-        <Column title="Column 2" className="column second-column">
+    <>
+      <div className="container">
+        <DndProvider backend={HTML5Backend}>
+          <Column title="Column 1" className="column first-column">
+            {items.map((item, idx) => (
+              <MovableItem
+                key={item.id}
+                name={item.name}
+                setItems={setItems}
+                index={idx}
+                moveCardHandler={moveCardHandler}
+              />
+            ))}
+          </Column>
+          {/* <Column title="Column 2" className="column second-column">
           {returnItemsForColumn('Column 2')}
-        </Column>
-      </DndProvider>
-    </div>
+        </Column> */}
+        </DndProvider>
+      </div>
+      <button onClick={() => addItemHandler('add')}>추가</button>
+      <button onClick={() => addItemHandler('delete')}>삭제</button>
+    </>
   );
 };
 
-export default App3;
+export default App4;
