@@ -4,7 +4,7 @@ import App from './App';
 import App2 from './App2';
 import App3 from './App3';
 import App4 from './App4';
-import GridDND from './GridDND';
+import Test from './Test';
 
 function Router() {
   return (
@@ -14,7 +14,7 @@ function Router() {
         <Route path="/App2" element={<App2 />} />
         <Route path="/App3" element={<App3 />} />
         <Route path="/App4" element={<App4 />} />
-        <Route path="/Grid" element={<GridDND />} />
+        <Route path="/Test" element={<Test />} />
       </Routes>
     </BrowserRouter>
   );

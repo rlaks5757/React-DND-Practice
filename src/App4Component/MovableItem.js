@@ -1,13 +1,14 @@
 import React, { useRef } from 'react';
 import { useDrag, useDrop } from 'react-dnd';
 
-const MovableItem = ({ name, setItems, index, moveCardHandler }) => {
-  const changeItemColumn = (currentItem, columnName) => {
+const MovableItem = ({ name, id, setItems, index, moveCardHandler }) => {
+  //Container 내 MoveableItem을 드래그하는 경우, 이동하는 위치를 정하는 부분
+  const changeItemColumn = () => {
     setItems(prevState => {
       return prevState.map(e => {
         return {
           ...e,
-          column: e.name === currentItem.name ? columnName : e.column,
+          name: e.name,
         };
       });
     });
@@ -61,10 +62,8 @@ const MovableItem = ({ name, setItems, index, moveCardHandler }) => {
     item: { name, type: 'Our first type' },
     end: (item, monitor) => {
       const dropResult = monitor.getDropResult();
-      if (dropResult && dropResult.name === 'Column 1') {
-        changeItemColumn(item, 'Column 1');
-      } else {
-        changeItemColumn(item, 'Column 2');
+      if (dropResult) {
+        changeItemColumn();
       }
     },
     collect: monitor => ({ isDragging: monitor.isDragging() }),
@@ -77,6 +76,7 @@ const MovableItem = ({ name, setItems, index, moveCardHandler }) => {
   return (
     <div ref={ref} className="movable-item" style={{ opacity }}>
       {name}
+      {id === 1 && <div>컬럼1</div>}
     </div>
   );
 };
