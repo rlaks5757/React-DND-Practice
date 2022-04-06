@@ -4,7 +4,8 @@ import App from './App';
 import App2 from './App2';
 import App3 from './App3';
 import App4 from './App4';
-import Test from './Test';
+import App5 from './App5';
+import ChartJsTest from './App4Component/ChartJsTest';
 
 function Router() {
   return (
@@ -14,7 +15,8 @@ function Router() {
         <Route path="/App2" element={<App2 />} />
         <Route path="/App3" element={<App3 />} />
         <Route path="/App4" element={<App4 />} />
-        <Route path="/Test" element={<Test />} />
+        <Route path="/App5" element={<App5 />} />
+        <Route path="/ChartJsTest" element={<ChartJsTest />} />
       </Routes>
     </BrowserRouter>
   );

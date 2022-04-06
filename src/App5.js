@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
-import Column from './App4Component/Column';
-import MovableItem from './App4Component/MovableItem';
-import './App4.scss';
+import Column from './App5Component/Column';
+import MovableItem from './App5Component/MovableItem';
+import './App5.scss';
 
-//Grid Version
-const App4 = () => {
+//Flex Version
+const App5 = () => {
   const [items, setItems] = useState([
     { id: 1, name: 'Item 1' },
     { id: 2, name: 'Item 2' },
@@ -54,9 +54,9 @@ const App4 = () => {
 
   return (
     <>
-      <div className="container4">
+      <div className="container5">
         <DndProvider backend={HTML5Backend}>
-          <Column title="DND Box" className="column4 first-column4">
+          <Column title="DND Box" className="column5 first-column4">
             {items &&
               items.map((item, idx) => (
                 <MovableItem
@@ -79,4 +79,4 @@ const App4 = () => {
   );
 };
 
-export default App4;
+export default App5;
