@@ -74,7 +74,11 @@ const MovableItem = ({ name, id, setItems, index, moveCardHandler }) => {
   drag(drop(ref));
 
   return (
-    <div ref={ref} className="movable-item" style={{ opacity }}>
+    <div
+      ref={ref}
+      className={id === 1 ? 'movable-item testMoval-item' : 'movable-item'}
+      style={{ opacity }}
+    >
       {name}
       {id === 1 && <div>컬럼1</div>}
     </div>
