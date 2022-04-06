@@ -4,13 +4,17 @@
   justify-content: space-around;
 
   .column4 {
-    width: 600px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(auto, 200px));
+    grid-gap: 10px;
+    justify-content: space-around;
+    // width: 600px;
     margin: 20px;
     border-radius: 10px;
     box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    // display: flex;
+    flex-direction: column;
+    // flex-wrap: wrap;
   }
 
   .first-column4 {
@@ -22,7 +26,7 @@
     background-color: #fff3f3;
     height: 100px;
     width: 170px;
-    margin: 10px auto;
+    margin: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -31,6 +35,7 @@
 
   .testMoval-item {
     width: 360px;
+    // width: 170px;
   }
 }
 
