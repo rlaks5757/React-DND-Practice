@@ -3,8 +3,7 @@
   flex-direction: row;
   justify-content: space-around;
 
-  .column {
-    height: 1400px;
+  .column4 {
     width: 400px;
     margin: 20px;
     border-radius: 10px;
@@ -14,12 +13,8 @@
     flex-wrap: wrap;
   }
 
-  .first-column {
+  .first-column4 {
     background-color: #f5ffea;
-  }
-
-  .second-column {
-    background-color: #fffbf5;
   }
 
   .movable-item {
@@ -31,6 +26,20 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);
+  }
+}
+
+.buttonBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  button {
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #f5ffea;
     box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);
   }
 }

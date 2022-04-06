@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import Column from './App4Component/Column';
@@ -51,43 +51,29 @@ const App4 = () => {
     }
   };
 
-  const returnItemsForColumn = columnName => {
-    return items
-      .filter(item => item.column === columnName)
-      .map((item, idx) => (
-        <MovableItem
-          key={item.id}
-          name={item.name}
-          setItems={setItems}
-          index={idx}
-          moveCardHandler={moveCardHandler}
-        />
-      ));
-  };
-
   return (
     <>
       <div className="container4">
         <DndProvider backend={HTML5Backend}>
-          <Column title="DND Box" className="column first-column">
-            {items.map((item, idx) => (
-              <MovableItem
-                key={item.id}
-                name={item.name}
-                id={item.id}
-                setItems={setItems}
-                index={idx}
-                moveCardHandler={moveCardHandler}
-              />
-            ))}
+          <Column title="DND Box" className="column4 first-column4">
+            {items &&
+              items.map((item, idx) => (
+                <MovableItem
+                  key={item.id}
+                  name={item.name}
+                  id={item.id}
+                  setItems={setItems}
+                  index={idx}
+                  moveCardHandler={moveCardHandler}
+                />
+              ))}
           </Column>
-          {/* <Column title="Column 2" className="column second-column">
-          {returnItemsForColumn('Column 2')}
-        </Column> */}
         </DndProvider>
       </div>
-      <button onClick={() => addItemHandler('add')}>추가</button>
-      <button onClick={() => addItemHandler('delete')}>삭제</button>
+      <div className="buttonBox">
+        <button onClick={() => addItemHandler('add')}>추가</button>
+        <button onClick={() => addItemHandler('delete')}>삭제</button>
+      </div>
     </>
   );
 };
