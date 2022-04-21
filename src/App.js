@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import Column from './App1Component/Column';
@@ -9,6 +9,14 @@ const App = () => {
   const [isFirstColumn, setIsFirstColumn] = useState(true);
 
   const Item = <MovableItem setIsFirstColumn={setIsFirstColumn} />;
+
+  useEffect(() => {
+    fetch('/data/productDetailData.json')
+      .then(res => res.json())
+      .then(data => {
+        console.log(data.product[0]);
+      });
+  }, []);
 
   return (
     <div className="container">

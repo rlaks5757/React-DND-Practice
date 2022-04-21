@@ -1,13 +1,17 @@
 import React from 'react';
-import styled from 'styled-components';
 import { Line } from 'react-chartjs-2';
 import { Chart as ChartJS, registerables } from 'chart.js';
+import styled from 'styled-components';
 
 ChartJS.register(...registerables);
 
 const ChartJsTest = () => {
-  return <Line type="line" data={data} options={options} />;
+  return <LineChart type="line" data={data} options={options} />;
 };
+
+const LineChart = styled(Line)`
+  height: 300px;
+`;
 
 const data = {
   labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
@@ -37,6 +41,7 @@ const data = {
 };
 
 const options = {
+  legend: { align: 'bottom' },
   spanGaps: true,
   maxBarThickness: 30,
   grouped: true,
@@ -45,6 +50,7 @@ const options = {
   },
   plugins: {
     legend: {
+      position: 'bottom',
       labels: {
         usePointStyle: true,
         padding: 10,
@@ -85,7 +91,7 @@ const options = {
         const newTicks = ticks.map(tick => {
           return {
             ...tick,
-            label: tick.label + '🎵',
+            label: tick.label,
           };
         });
 
@@ -110,7 +116,7 @@ const options = {
         color: '#E2E2E230',
       },
       afterDataLimits: scale => {
-        scale.max = scale.max * 1.2;
+        scale.max = scale.max * 2;
       },
       axis: 'y',
       display: true,
@@ -128,6 +134,7 @@ const options = {
       },
     },
     y_sub: {
+      // display: false,
       position: 'right',
       title: {
         display: true,

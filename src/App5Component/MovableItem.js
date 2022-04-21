@@ -1,9 +1,13 @@
 import React, { useRef } from 'react';
 import { useDrag, useDrop } from 'react-dnd';
-import ChartTest from '../ChartTest';
-import ChartJsTest from './ChartJsTest';
+import styled from 'styled-components';
+import ManPowerCard from './MainCards/ManPower/ManPowerCard';
+import Safety from './MainCards/Safety/Safety';
+import DisasterStatus from './MainCards/DisasterStatus/DisasterStatus';
+import MapWeather from './MainCards/MapWeather/MapWeather';
+import ChartJsTest from './MainCards/Progress/ChartJsTest';
 
-const MovableItem = ({ name, id, setItems, index, moveCardHandler }) => {
+const MovableItem = ({ name, id, items, setItems, index, moveCardHandler }) => {
   //Container 내 MoveableItem을 드래그하는 경우, 이동하는 위치를 정하는 부분
   const changeItemColumn = () => {
     setItems(prevState => {
@@ -76,20 +80,27 @@ const MovableItem = ({ name, id, setItems, index, moveCardHandler }) => {
   drag(drop(ref));
 
   return (
-    <div
-      ref={ref}
-      className={
-        id === 1
-          ? 'firstMoval-item'
-          : id === 2
-          ? 'firstMoval-item'
-          : 'movable-item'
-      }
-      style={{ opacity }}
-    >
-      {id === 1 ? <ChartTest /> : id === 2 ? <ChartJsTest /> : name}
-    </div>
+    <MovableItemTotal ref={ref} className="" style={{ opacity }}>
+      {id === 1 ? (
+        <ManPowerCard items={items[id - 1]} />
+      ) : id === 2 ? (
+        <Safety />
+      ) : id === 3 ? (
+        <DisasterStatus />
+      ) : id === 4 ? (
+        <MapWeather />
+      ) : id === 5 ? (
+        <ChartJsTest />
+      ) : (
+        name
+      )}
+    </MovableItemTotal>
   );
 };
-
 export default MovableItem;
+
+const MovableItemTotal = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;

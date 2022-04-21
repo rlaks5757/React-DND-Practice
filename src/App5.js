@@ -8,16 +8,28 @@ import './App5.scss';
 //Flex Version
 const App5 = () => {
   const [items, setItems] = useState([
-    { id: 1, name: 'Item 1' },
-    { id: 2, name: 'Item 2' },
-    { id: 3, name: 'Item 3' },
-    { id: 4, name: 'Item 4' },
-    { id: 5, name: 'Item 5' },
-    { id: 6, name: 'Item 6' },
-    { id: 7, name: 'Item 7' },
-    { id: 8, name: 'Item 8' },
-    { id: 9, name: 'Item 9' },
-    { id: 10, name: 'Item 10' },
+    {
+      id: 1,
+      name: 'Item 1',
+      title: '출력현황',
+      data: [
+        { id: 1, name: '일일 인원', totalCount: 1, data: [] },
+        { id: 2, name: '누적 인원', totalCount: 1, data: [] },
+        { id: 3, name: '일일 장비', totalCount: 1, data: [] },
+        { id: 4, name: '누적 장비', totalCount: 1, data: [] },
+        { id: 5, name: '신규채용자', totalCount: 1, data: [] },
+        { id: 6, name: '안전교육 총인원', totalCount: 1, data: [] },
+        { id: 7, name: '월간교육 횟수', totalCount: 1, data: [] },
+        { id: 8, name: '안전교육 총횟수', totalCount: 1, data: [] },
+      ],
+    },
+    { id: 2, name: 'Item 2', title: '안전시정조치요구서', data: [] },
+    { id: 3, name: 'Item 3', title: '재해현황', data: [] },
+    { id: 4, name: 'Item 4', title: '지도&날씨', data: [] },
+    { id: 5, name: 'Item 5', title: '공정률', data: [] },
+    { id: 6, name: 'Item 6', title: '예산변경', data: [] },
+    { id: 7, name: 'Item 7', title: '실행률', data: [] },
+    { id: 8, name: 'Item 8', title: 'Project 현황', data: [] },
   ]);
 
   const moveCardHandler = (dragIndex, hoverIndex) => {
@@ -63,6 +75,7 @@ const App5 = () => {
                   key={item.id}
                   name={item.name}
                   id={item.id}
+                  items={items}
                   setItems={setItems}
                   index={idx}
                   moveCardHandler={moveCardHandler}
