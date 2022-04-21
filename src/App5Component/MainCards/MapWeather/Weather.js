@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import WeatherToken from './WeatherToken';
 
 const Weather = ({ location }) => {
   const [weather, setWeather] = useState('');
 
   useEffect(() => {
     fetch(
-      `http://api.openweathermap.org/data/2.5/weather?lat=${location.lat}&lon=${location.lng}&appid=${apiInfo.key}`
+      `http://api.openweathermap.org/data/2.5/weather?lat=${location.lat}&lon=${location.lng}&appid=${WeatherToken.key}`
     )
       .then(res => res.json())
       .then(data => {
@@ -14,11 +15,6 @@ const Weather = ({ location }) => {
         setWeather(data);
       });
   }, []);
-
-  const apiInfo = {
-    key: '7987bd1d6eb15110763d1874bde8ad1f',
-    base: 'https://api.openweathermap.org/data/2.5/',
-  };
 
   return (
     <WeatherContent>
